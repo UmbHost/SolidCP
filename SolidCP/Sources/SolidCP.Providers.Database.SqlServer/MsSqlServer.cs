@@ -266,7 +266,7 @@ namespace SolidCP.Providers.Database
             return database;
         }
 
-        private string CreateFileNameString(string fileName, int fileSize)
+        protected string CreateFileNameString(string fileName, int fileSize)
         {
             string str = fileSize == 0 ? string.Format(" FILENAME = '{0}' ", fileName) :
                 string.Format(" FILENAME = '{0}', MAXSIZE = {1} ", EscapeSql(fileName), fileSize);
@@ -1174,7 +1174,7 @@ namespace SolidCP.Providers.Database
             ExecuteNonQuery(String.Format("KILL {0}", spid));
         }
 
-        private string EscapeSql(string s)
+        protected string EscapeSql(string s)
         {
             return (s != null) ? s.Replace("'", "''") : null;
         }
